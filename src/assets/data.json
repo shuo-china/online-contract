@@ -1,0 +1,33 @@
+{
+  "name": "测试合同模板",
+  "pages": [
+    {
+      "page": 1,
+      "img": "https://vms.kylinsoft.ltd/constract.svg",
+      "width": 800,
+      "height": 1100,
+      "controls": [
+        {
+          "key": 1,
+          "type": "input",
+          "x": 200,
+          "y": 200
+        }
+      ]
+    },
+    {
+      "page": 2,
+      "img": "https://vms.kylinsoft.ltd/constract.svg",
+      "width": 800,
+      "height": 1100,
+      "controls": [
+        {
+          "key": 2,
+          "type": "select",
+          "x": 300,
+          "y": 300
+        }
+      ]
+    }
+  ]
+}
