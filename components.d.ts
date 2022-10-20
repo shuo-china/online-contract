@@ -7,15 +7,19 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    Control: typeof import('./src/components/render/control.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElContainer: typeof import('element-plus/es')['ElContainer']
     ElHeader: typeof import('element-plus/es')['ElHeader']
+    ElInput: typeof import('element-plus/es')['ElInput']
     ElMain: typeof import('element-plus/es')['ElMain']
+    ElTextarea: typeof import('element-plus/es')['ElTextarea']
     Input: typeof import('./src/components/controls/input/index.vue')['default']
     Page: typeof import('./src/components/render/page.vue')['default']
     Render: typeof import('./src/components/render/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    Textarea: typeof import('./src/components/controls/textarea/index.vue')['default']
   }
 }

@@ -1,11 +1,17 @@
-// 控件类型标识
+// 控件类型初始参数
 export const ControlItems = {
   input: {
-    name: '输入框',
-    component: 'cInput'
+    name: '单行文本',
+    props: {
+      width: 277,
+      height: 32
+    }
   },
-  select: {
-    name: '下拉框',
-    component: 'cSelect'
+  textarea: {
+    name: '多行文本',
+    props: {
+      width: 181,
+      height: 52
+    }
   }
 }

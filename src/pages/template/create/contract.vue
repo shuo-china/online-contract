@@ -1,18 +1,14 @@
 <template>
   <div class="wrapper">
     <div id="doc" class="doc">
-      <render v-model="data" />
-      {{ JSON.stringify(data, null, 2) }}
+      <!-- <pre>{{ JSON.stringify(data, null, 4) }}</pre> -->
+      <render />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import Render from '@/components/render/index.vue'
-import rawData from '@/assets/data.json'
-import { ref } from 'vue'
-
-const data = ref(rawData)
 </script>
 
 <style lang="scss" scoped>

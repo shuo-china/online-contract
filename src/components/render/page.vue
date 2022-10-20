@@ -1,20 +1,29 @@
 <template>
   <div ref="el" class="page" :style="styles">
     <img :src="data.img" />
-    <div class="controls"></div>
+    <div class="controls">
+      <control
+        v-for="item in data.controls"
+        :key="item.key"
+        :page-key="data.key"
+        :data="item"
+      />
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
+import Control from './control.vue'
+import { useContractStore } from '@/store/contract'
+import { calcX, calcY } from './util'
+import { ControlItems } from '@/constants'
 import type { PageData } from '@/types'
+
+const contractStore = useContractStore()
 
 const props = defineProps<{
   data: PageData
-}>()
-
-const emit = defineEmits<{
-  (e: 'update', value: PageData): void
 }>()
 
 const styles = computed(() => ({
@@ -34,7 +43,21 @@ const drop = e => {
   e.preventDefault()
   // 获取控件类型
   const controlType = e.dataTransfer.getData('control_type')
-  emit('update', { ...props.data, width: 500 })
+  // 获取控件初始参数
+  const controlProps = ControlItems[controlType].props
+
+  // 添加控件
+  const control = {
+    key: props.data.controls.length
+      ? props.data.controls.slice(-1)[0].key + 1
+      : 1,
+    type: controlType,
+    x: calcX(e, controlProps, props.data),
+    y: calcY(e, controlProps, props.data),
+    props: controlProps
+  }
+
+  contractStore.addControl(props.data.key, control)
 }
 
 onMounted(() => {
