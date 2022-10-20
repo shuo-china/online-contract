@@ -3,15 +3,15 @@ export const ControlItems = {
   input: {
     name: '单行文本',
     props: {
-      width: 277,
+      width: 150,
       height: 32
     }
   },
   textarea: {
     name: '多行文本',
     props: {
-      width: 181,
-      height: 52
+      width: 110,
+      height: 60
     }
   }
 }

@@ -5,7 +5,7 @@
       <control
         v-for="item in data.controls"
         :key="item.key"
-        :page-key="data.key"
+        :page-data="data"
         :data="item"
       />
     </div>
@@ -44,7 +44,9 @@ const drop = e => {
   // 获取控件类型
   const controlType = e.dataTransfer.getData('control_type')
   // 获取控件初始参数
-  const controlProps = ControlItems[controlType].props
+  const controlProps = ControlItems[controlType]?.props
+
+  if (!controlProps) return
 
   // 添加控件
   const control = {
@@ -86,9 +88,11 @@ onBeforeUnmount(() => {
     left: 0;
     width: 100%;
     height: 100%;
+    user-select: none;
   }
 
   .controls {
+    user-select: none;
     position: absolute;
     top: 0;
     right: 0;
